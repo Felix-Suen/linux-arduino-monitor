@@ -5,10 +5,9 @@ import os
 
 ser = serial.Serial('/dev/ttyUSB0') #define serial port.
 line = ""
+sep1 = '.'
 
 while True:
-    sep = ',' 
-    sep1 = '.'
     t = os.popen('uptime -p').read()[:-1] #open the file /proc/uptime and read it
     up = str(t)
     

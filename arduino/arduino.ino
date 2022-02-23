@@ -51,7 +51,7 @@ void setup() {
   Serial.print("hello world");
   delay(250); // wait for the OLED to power up
   display.begin(i2c_Address, true); // Address 0x3C default
-  //display.setContrast (0); // dim display
+  display.setContrast (0); // dim display
 
   // Clear the buffer.
   display.clearDisplay();
