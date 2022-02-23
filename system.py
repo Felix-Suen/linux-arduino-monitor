@@ -2,8 +2,10 @@ import psutil
 import serial
 import time
 import os
+
 ser = serial.Serial('/dev/ttyUSB0') #define serial port.
 line = ""
+
 while True:
     sep = ',' 
     sep1 = '.'
@@ -11,12 +13,13 @@ while True:
     up = str(t)
     
     cpu = psutil.cpu_percent(interval=10) #reads the cpu percentage
+    temp = int(psutil.sensors_temperatures().get('coretemp')[0].current)
     cpu = str(cpu)
     cpu = str(cpu).replace('"', "")
     cpu = str(cpu).replace("'", "")
     cpu = str(cpu).replace(' ', "")
     cpu = 'CPU ' + cpu
-    cpu = str(cpu) + '%'
+    cpu = str(cpu) + '% ' + str(temp) + 'C'
     
     amount_of_ram = str(psutil.virtual_memory()[2]).split(sep1, 1)[0]
     ram = 'RAM', str(amount_of_ram)
@@ -29,12 +32,11 @@ while True:
     up = up.replace("'", "")
     up = up.replace(")", "")
     up = up.replace("up", "UP")
-    up = up.replace(" minutes", "m")
+    up = up.replace(" week", "w")
     up = up.replace(" minute", "m")
-    up = up.replace(" hours", "h")
     up = up.replace(" hour", "h")
-    up = up.replace(" days", "d")
     up = up.replace(" day", "d")
+    up = up.replace("s", "") # get rid of plurals
     ram = ram.replace("(", "")
     ram = ram.replace(")", "")
     ram = ram.replace(",", "")
