@@ -2,7 +2,6 @@
 
 import pyudev
 import os
-import daemon
 
 def main():
     path = os.path.dirname(os.path.realpath(__file__))
@@ -17,5 +16,4 @@ def main():
             print("device is connected")
             os.system(path + '/system.py') # system.py is in the same directory
 
-with daemon.DaemonContext():
-    main()
+main()
