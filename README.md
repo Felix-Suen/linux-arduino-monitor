@@ -1,5 +1,9 @@
 # Arduino Linux Monitor with 128x64 OLED Display
-An energy efficient and cool way to monitor the status of linux computers in real-time. Perfect for headless home servers. It is able to display server uptime, CPU usage, core temperature, RAM usage, and storage availability. 
+
+## Description
+A light weight and energy efficient way to monitor the status of linux computers in real-time. Perfect for headless home servers. It is able to display server uptime, CPU usage, core temperature, RAM usage, and storage availability.
+
+## Example
 ![example image](image.JPG)
 
 ## Hardware Components
