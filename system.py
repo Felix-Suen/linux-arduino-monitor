@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 import psutil
 import serial
 import time
@@ -5,7 +7,6 @@ import os
 
 ser = serial.Serial('/dev/ttyUSB0') #define serial port.
 line = ""
-sep1 = '.'
 
 while True:
     t = os.popen('uptime -p').read()[:-1] #open the file /proc/uptime and read it
@@ -20,7 +21,7 @@ while True:
     cpu = 'CPU ' + cpu
     cpu = str(cpu) + '% ' + str(temp) + 'C'
     
-    amount_of_ram = str(psutil.virtual_memory()[2]).split(sep1, 1)[0]
+    amount_of_ram = str(psutil.virtual_memory()[2])
     ram = 'RAM', str(amount_of_ram)
     ram = str(ram) + "%"
 
@@ -42,7 +43,6 @@ while True:
     ram = ram.replace("'", "")
 
     combined = up + "\n\n" + cpu + "\n\n" + ram + "\n\n" + disk
-    print(combined)
 
     ser.write(combined.encode()) # Write the data 
     line = ser.readline() # Read the serial output

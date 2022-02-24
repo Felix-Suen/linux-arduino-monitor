@@ -55,6 +55,13 @@ void setup() {
 
   // Clear the buffer.
   display.clearDisplay();
+  display.setCursor(5, 0);
+  display.setTextSize(1);
+  display.setTextColor(SH110X_WHITE);
+  display.println("Linux Monitor System");
+  display.drawBitmap(30, 10, computer, 60, 60, 1);
+  display.display();
+  delay(2000);
 }
 
 void loop() {
@@ -67,7 +74,7 @@ void loop() {
 
     display.clearDisplay();
     display.setCursor(0, 0);
-    display.setTextSize(1.5);
+    display.setTextSize(1);
     display.setTextColor(SH110X_WHITE);
     display.println(inData);
     display.drawBitmap(68, 0, computer, 60, 60, 1);
